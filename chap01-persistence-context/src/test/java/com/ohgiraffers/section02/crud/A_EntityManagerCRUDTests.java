@@ -102,4 +102,29 @@ public class A_EntityManagerCRUDTests {
         Assertions.assertEquals(menuNameChange, menu.getMenuName());
         Assertions.assertEquals(menuNameChange, entityManager.find(Menu.class, 23).getMenuName());
     }
+
+    @DisplayName("메뉴 삭제하기 테스트")
+    @Test
+    public void deleteMenuTest() {
+
+        // given
+        Menu menuToRemove = entityManager.find(Menu.class, 23); // 영속화
+        System.out.println("menuToRemove = " + menuToRemove);
+
+        // when
+        EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
+
+        try {
+            entityManager.remove(menuToRemove);
+            transaction.commit();
+        } catch (Exception e) {
+            transaction.rollback();
+            e.printStackTrace();
+        }
+
+        // then
+        Menu removedMenu = entityManager.find(Menu.class, 23);
+        Assertions.assertNull(removedMenu);
+    }
 }

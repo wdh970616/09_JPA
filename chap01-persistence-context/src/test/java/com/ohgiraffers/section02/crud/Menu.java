@@ -14,7 +14,7 @@ public class Menu {
 
     @Id // pk에 해당하는 속성
     @Column(name="menu_code") // 데이터베이스에 대응되는 컬럼명 지정
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // 기본 키값을 데이터베이스에서 생성
+//    @GeneratedValue(strategy = GenerationType.IDENTITY) // 기본 키값을 데이터베이스에서 생성
     private int menuCode;
 
     @Column(name = "menu_name")
