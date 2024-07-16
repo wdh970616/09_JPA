@@ -4,8 +4,6 @@ package com.ohgiraffers.section01.simple;
 import jakarta.persistence.*;
 import org.junit.jupiter.api.*;
 
-import java.awt.*;
-import java.lang.reflect.Type;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
