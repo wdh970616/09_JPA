@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.2">
+    <persistence-unit name="jpatest">
+        <properties>
+            <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/menudb"/>
+            <property name="jakarta.persistence.jdbc.user" value="ohgiraffers"/>
+            <property name="jakarta.persistence.jdbc.password" value="ohgiraffers"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+
+            <!-- DML 구문 수행시 자동으로 스키마 생성 -->
+            <!--
+            개발 초기단계
+            create : 실행마다 DDL 실행(기존 테이블 모두 drop)
+            create-drop : 실행마다 DDL 실행, 종료시 모든 테이블 drop
+            update : 변경사항만 alter DDL 실행(테이블이 없으면 create, 컬럼추가만 반영)
+
+            실제 운영시
+            validate : 생성/수정 DDL은 실행하지 않고, 유효성 검사만 수행(테이블/컬럼 매핑에 문제가 있는 경우)
+            none : 아무것도 하지 않음. default 값임.
+            -->
+            <property name="hibernate.hbm2ddl.auto" value="none"/>
+        </properties>
+    </persistence-unit>
+</persistence>
