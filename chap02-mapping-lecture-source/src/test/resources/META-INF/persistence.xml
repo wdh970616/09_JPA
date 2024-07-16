@@ -8,6 +8,8 @@
         <class>com.ohgiraffers.section04.enumtype.Member</class>
         <class>com.ohgiraffers.section05.access.subsection01.field.Member</class>
         <class>com.ohgiraffers.section05.access.subsection02.property.Member</class>
+        <class>com.ohgiraffers.section06.compositekey.subsection01.embedded.Member</class>
+        <class>com.ohgiraffers.section06.compositekey.subsection02.IdClassTests.Member</class>
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/memberdb"/>
