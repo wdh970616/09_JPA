@@ -87,6 +87,12 @@ public class ManyToOneTests {
         System.out.println("category = " + categoryName);
     }
 
+    /*
+     * commit()을 할 경우에는 컨텍스트 내에 저장된 영속성 객체를 insert 하는 쿼리문이 작성된다.
+     * 단, 카테고리는 컨텍스트 내에 존재하지 않기 때문에 카테고리 코드를 참조하는 tbl_menu에 데이터를 넣을 수 없게 된다.
+     * 이때 사용할 수 있는것이 @ManyToOne 어노테이션에 영속성 전이 설정을 해주는것이다. (cascade = CascadeType.PERSIST)
+     * 영속성 전이 : 특정 엔티티를 영속화 할때 연관된 엔티티도 함께 영속화를 진행한다는 의미
+     */
     @DisplayName("다대일 연관관계 객체 삽입 테스트")
     @Test
     public void test3() {
