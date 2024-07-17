@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.2">
     <persistence-unit name="jpatest">
-<!--        <class>com.ohgiraffers.section01.simple.Menu</class>-->
+        <class>com.ohgiraffers.section01.simple.Menu</class>
         <class>com.ohgiraffers.section02.parameter.Menu</class>
+        <class>com.ohgiraffers.section03.projection.Menu</class>
+        <class>com.ohgiraffers.section03.projection.BiDirectionMenu</class>
+        <class>com.ohgiraffers.section03.projection.BiDirectionCategory</class>
+        <class>com.ohgiraffers.section03.projection.EmbeddedMenu</class>
+        <class>com.ohgiraffers.section03.projection.Category</class>
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/menudb"/>
