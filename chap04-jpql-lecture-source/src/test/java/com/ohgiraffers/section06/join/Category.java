@@ -1,20 +1,18 @@
-package com.ohgiraffers.section03.projection;
+package com.ohgiraffers.section06.join;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
-@Entity(name = "bidirection_category")
+@Entity(name = "category_section06")
 @Table(name = "tbl_category")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class BiDirectionCategory {
+@ToString
+public class Category {
 
     @Id
     @Column(name = "category_code")
@@ -26,8 +24,8 @@ public class BiDirectionCategory {
     @Column(name = "ref_category_code")
     private Integer refCategoryCode;
 
-    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
-    private List<BiDirectionMenu> menuList;
+    @OneToMany(mappedBy = "category")
+    private List<Menu> menuList;
 
     // 순환참조 방지
     @Override
