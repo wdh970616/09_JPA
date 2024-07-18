@@ -22,10 +22,12 @@ import java.util.stream.Collectors;
 public class MenuService {
 
     private final MenuRepository menuRepository;
+    private final CategoryRepository categoryRepository;
     private final ModelMapper modelMapper;
 
-    public MenuService(MenuRepository menuRepository, ModelMapper modelMapper) {
+    public MenuService(MenuRepository menuRepository, CategoryRepository categoryRepository, ModelMapper modelMapper) {
         this.menuRepository = menuRepository;
+        this.categoryRepository = categoryRepository;
         this.modelMapper = modelMapper;
     }
 
@@ -89,6 +91,8 @@ public class MenuService {
 
     public List<CategoryDto> findAllCategory() {
 
-        List<Category> categoryList = CategoryRepository.
+//        List<Category> categoryList = categoryRepository.findAllCategory();
+
+        return null;
     }
 }
