@@ -6,6 +6,7 @@ import com.seongmin.springdatajpa.menu.model.entity.Category;
 import com.seongmin.springdatajpa.menu.model.entity.Menu;
 import com.seongmin.springdatajpa.menu.model.repository.CategoryRepository;
 import com.seongmin.springdatajpa.menu.model.repository.MenuRepository;
+import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
@@ -91,8 +92,42 @@ public class MenuService {
 
     public List<CategoryDto> findAllCategory() {
 
-//        List<Category> categoryList = categoryRepository.findAllCategory();
+        List<Category> categoryList = categoryRepository.findAll();
 
-        return null;
+        return categoryList.stream().map(category -> modelMapper.map(category, CategoryDto.class)).collect(Collectors.toList());
+    }
+
+    @Transactional
+    public void registNewMenu(MenuDto newMenu) {
+
+//        Menu menu = modelMapper.map(newMenu, Menu.class);
+
+        // Builder 적용
+        Menu menu = new Menu().builder()
+                .MenuName(newMenu.getMenuName())
+                .menuPrice(newMenu.getMenuPrice())
+                .categoryCode(newMenu.getCategoryCode())
+                .orderableStatus(newMenu.getOrderableStatus())
+                .build();
+
+        menuRepository.save(menu);
+    }
+
+    @Transactional
+    public void modifyMenu(MenuDto modifyMenu) {
+
+        // modifyMenu -> 비영속
+        // 영속
+
+        Menu foundMenu = menuRepository.findById(modifyMenu.getMenuCode())
+                .orElseThrow(() -> new IllegalArgumentException("Menu not found"));
+
+        foundMenu.setMenuName(modifyMenu.getMenuName());
+    }
+
+    @Transactional
+    public void deleteMenu(Integer menuCode) {
+
+        menuRepository.deleteById(menuCode);
     }
 }
