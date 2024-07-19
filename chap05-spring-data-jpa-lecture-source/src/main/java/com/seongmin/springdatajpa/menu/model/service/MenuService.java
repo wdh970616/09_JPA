@@ -92,9 +92,12 @@ public class MenuService {
 
     public List<CategoryDto> findAllCategory() {
 
-        List<Category> categoryList = categoryRepository.findAll();
+//        List<Category> categoryList = categoryRepository.findAll();
+//        List<Category> categoryList = categoryRepository.findAllCategoryByJPQL();
+        List<Category> categoryList = categoryRepository.findAllCategoryByNativeQuery();
 
-        return categoryList.stream().map(category -> modelMapper.map(category, CategoryDto.class)).collect(Collectors.toList());
+        return categoryList.stream().map(category ->
+                modelMapper.map(category, CategoryDto.class)).collect(Collectors.toList());
     }
 
     @Transactional
